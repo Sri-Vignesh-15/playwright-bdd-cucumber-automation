@@ -1,17 +1,20 @@
 import { test as base } from 'playwright-bdd';
 import { LoginPage } from '../page/loginpage';
-import * as Pages from '../page/index'
+import * as Pages from '../page/index';
 import { Page } from '@playwright/test';
 
 type Myfixtures = {
-    logInPage: Pages.LoginPage;
-}
+  logInPage: Pages.LoginPage;
+};
 
-const createTestFunction = <T extends new (page:Page)  => InstanceType<T>>(PageClass: T) =>
-    ( {page}: {page: Page}, use: (fixture: InstanceType<T>) => Promise<void>) => 
-    use(new PageClass(page));   
+const createTestFunction =
+  <T extends new (page: Page) => InstanceType<T>>(PageClass: T) =>
+  (
+    { page }: { page: Page },
+    use: (fixture: InstanceType<T>) => Promise<void>
+  ) =>
+    use(new PageClass(page));
 
 export const test = base.extend<Myfixtures>({
-    logInPage: createTestFunction(Pages.LoginPage)
-})
-
+  logInPage: createTestFunction(Pages.LoginPage),
+});
