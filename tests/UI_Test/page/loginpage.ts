@@ -1,7 +1,7 @@
 import { Locator,Page,expect } from '@playwright/test'
+import { BasePage } from './BasePage';
 
-export class LoginPage{
-    protected page: Page;
+export class LoginPage extends BasePage{
     readonly website_Logo: Locator;
     readonly my_Account_Btn: Locator;
     readonly login_page: Locator;
@@ -11,10 +11,10 @@ export class LoginPage{
     readonly alert_Message: Locator;
 
     constructor(page: Page){
-        this.page=page;
+        super(page);
         this.website_Logo = page.getByRole('img', {name: 'Poco Electro'});
         this.my_Account_Btn = page.getByRole('button', {name: ' My account'});
-        this.login_page = page.locator('.account-login');
+        this.login_page = page.locator('#account-login');
         this.email_Field = page.getByLabel('E-Mail Address');
         this.password_Field = page.getByLabel('Password');
         this.login_Btn = page.getByRole('button', {name:'Login'});
