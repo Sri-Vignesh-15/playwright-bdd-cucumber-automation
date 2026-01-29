@@ -1,9 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
-import { defineBddConfig } from 'playwright-bdd'
+import { defineBddConfig } from 'playwright-bdd';
 
 const testDir = defineBddConfig({
-  features:'tests/UI_Test/features/***.feature',
-  steps: ['tests/UI_Test/steps/***.ts' , 'tests/UI_Test/fixture/fixtures.ts'],
+  features: 'tests/UI_Test/features/***.feature',
+  steps: ['tests/UI_Test/steps/***.ts', 'tests/UI_Test/fixture/fixtures.ts'],
 });
 
 /**
@@ -53,7 +53,7 @@ export default defineConfig({
     //   use: { ...devices['Desktop Firefox'] },
     // },
 
-    // {  
+    // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     // },
