@@ -1,4 +1,4 @@
-@test
+@Login
 Feature: Login Verification of the E-Commerce LambdaTest
 
   Background:
