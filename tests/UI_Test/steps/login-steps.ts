@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { createBdd } from 'playwright-bdd';
 import { test } from '../fixture/fixtures';
-import { LoginPage } from '../page/loginpage';
 
 const { Given, When, Then } = createBdd(test);
 const URL = 'https://ecommerce-playground.lambdatest.io/';
