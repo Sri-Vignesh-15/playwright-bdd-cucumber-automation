@@ -34,6 +34,7 @@
     "@types/node": "^25.0.10",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
+    "allure-playwright": "^3.4.5",
     "eslint": "^9.39.2",
     "eslint-plugin-playwright": "^2.5.1",
     "gherkin-lint": "^4.2.4",
