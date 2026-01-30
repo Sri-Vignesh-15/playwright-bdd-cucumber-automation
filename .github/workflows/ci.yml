@@ -9,14 +9,14 @@ on:
 jobs:
   ubuntu_pipeline:
     name: ▶ Run Ubuntu Pipeline
-    uses: ./.github/workflows/playwright-ubuntu.yml
+    uses: .github/workflows/playwright-ubuntu.yml
     secrets:
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   docker_pipeline:
     name: ▶ Run Docker Pipeline
-    uses: ./.github/workflows/playwright-docker.yml
+    uses: .github/workflows/playwright-docker.yml
     secrets:
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
