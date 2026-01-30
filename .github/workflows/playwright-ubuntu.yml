@@ -1,10 +1,12 @@
 name: Playwright Tests with Allure & Netlify using ubuntu
 
 on:
-  push:
-    branches: [ main,master ]
-  pull_request:
-    branches: [ main,master ]
+  workflow_call:
+    secrets:
+      NETLIFY_SITE_ID:
+        required: true
+      NETLIFY_AUTH_TOKEN:
+        required: true
 
 jobs:
   test:
