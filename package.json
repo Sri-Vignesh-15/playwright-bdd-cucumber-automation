@@ -8,7 +8,9 @@
     "lint:feature": "node lint-features.js",
     "lint": "npm run lint:ts && npm run lint:feature",
     "lint:fix": "eslint \"tests/**/*.{ts,js}\" --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "npx bddgen && npx playwright test",
+    "allure-report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "lint-staged": {
     "*.ts": [
