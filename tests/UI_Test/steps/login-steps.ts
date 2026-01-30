@@ -10,6 +10,7 @@ const logged_URL = 'route=account/account';
 
 Given('the user navigates to the application', async ({ logInPage }) => {
   await logInPage.navigateToURL(URL);
+  console.log('My First Report for Netlify is Deployed');
 });
 
 Given('the user is on the login page', async ({ logInPage }) => {
