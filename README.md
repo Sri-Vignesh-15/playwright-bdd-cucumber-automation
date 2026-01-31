@@ -51,5 +51,7 @@ npm run test
 Run in headed mode (visible browser):
 npx playwright test --headed
 
+To Generate Cucumber-Multiple-Html-Reporter
+npm run cucumber-report-bdd
 
 ```
