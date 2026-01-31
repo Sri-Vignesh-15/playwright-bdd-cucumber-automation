@@ -5,6 +5,9 @@ on:
     branches: [ main,master ]
   pull_request:
     branches: [ main,master ]
+  
+  schedule:
+    - cron: '30 22 * * *'   # 4:00 AM IST daily
 
 jobs:
   test:
@@ -71,13 +74,24 @@ jobs:
           path: allure-report/
           retention-days: 30
 
-      # 1️⃣1️⃣ Deploy Allure report to Netlify
+      # 1️⃣1️⃣ Deploy Condition Based Allure report to Netlify
       - name: Deploy Allure report to Netlify
         if: success()
-        run: |
-          npx netlify deploy \
-            --site ${{ secrets.NETLIFY_SITE_ID }} \
-            --prod \
-            --dir allure-report
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          BRANCH_NAME=${{ github.head_ref || github.ref_name }}
+
+          if [ "$BRANCH_NAME" == "main" ] || [ "$BRANCH_NAME" == "master" ]; then
+            echo "Deploying main/master report to production..."
+            npx netlify deploy \
+              --site ${{ secrets.NETLIFY_SITE_ID }} \
+              --prod \
+              --dir allure-report
+          else
+            echo "Deploying branch preview report for $BRANCH_NAME ..."
+            npx netlify deploy \
+              --site ${{ secrets.NETLIFY_SITE_ID }} \
+              --alias "$BRANCH_NAME" \
+              --dir allure-report
+          fi
